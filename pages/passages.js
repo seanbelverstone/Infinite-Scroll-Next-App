@@ -12,7 +12,7 @@ class Passages extends React.Component {
 	}
 
 
-	componentWillMount = () => {
+	componentDidMount = () => {
 		API.getPassages().then(results => {
 			this.setState({passageResults: results.data.data.passages});
 		});
