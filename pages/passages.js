@@ -14,10 +14,25 @@ class Passages extends React.Component {
 
 	componentWillMount = () => {
 		API.getPassages().then(results => {
-			this.setState({passageResults: results.data.data});
+			this.setState({passageResults: results.data.data.passages});
 		});
 	
 	}
+
+	renderPassages() {
+		return this.state.passageResults.map(passage => {
+			return (
+				<Card 
+					key={passage.id}
+					title={passage.title}
+					reference_id={passage.reference_id}
+					notes={passage.notes}
+					text={passage.text}
+					label={passage.subjects.label}
+				/>
+			)
+		})
+	};
 
 	render() {
 		return(
@@ -33,11 +48,7 @@ class Passages extends React.Component {
 
 					<div className='row'>
 						<CardWrapper>
-
-							<Card>
-								
-							</Card>
-
+							{this.renderPassages()}
 						</CardWrapper>
 					</div>
 				</div>
