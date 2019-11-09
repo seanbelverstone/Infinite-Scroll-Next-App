@@ -8,12 +8,13 @@ import API from "../utils/API";
 class Passages extends React.Component {
 
 	state = {
-		passageResults: []
+		passageResults: [],
+		page: 0
 	}
 
 
 	componentDidMount = () => {
-		API.getPassages().then(results => {
+		API.getPassages(page).then(results => {
 			this.setState({passageResults: results.data.data.passages});
 		});
 	
