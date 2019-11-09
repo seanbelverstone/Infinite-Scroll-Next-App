@@ -14,7 +14,6 @@ class Passages extends React.Component {
 
 	componentWillMount = () => {
 		API.getPassages().then(results => {
-			console.log(results.data.data)
 			this.setState({passageResults: results.data.data});
 		});
 	
