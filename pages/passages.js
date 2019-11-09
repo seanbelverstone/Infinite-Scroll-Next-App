@@ -9,7 +9,7 @@ const Passages = () => (
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
-		<MainNav title="Passages"/>
+		<MainNav />
 		<div className='hero'>
 			<h1 className='title'>Passages</h1>
 
