@@ -6,16 +6,14 @@ const MainCard = (props) => {
 
 
 	return (
-		<div>
-			<Card>
-				<CardBody>
-					<CardTitle>{`Title: ${props.title} ID: ${props.reference_id}`}</CardTitle>
-					<CardSubtitle>{`Notes ${props.notes}`}</CardSubtitle>
-					<CardText>{props.text}</CardText>
-					<p>{props.label}</p>
-				</CardBody>
-			</Card>
-		</div>
+		<li className="cardList">
+			<div className="cardBody">
+				<div className="title">{`Title: ${props.title} ID: ${props.reference_id}`}</div>
+				<div className="subTitle">{`Notes ${props.notes}`}</div>
+				<div className="text">{props.text}</div>
+				<p>{props.label}</p>
+			</div>
+		</li>
 	);
 };
 

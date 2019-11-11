@@ -2,12 +2,12 @@ import axios from "axios";
 
 export default {
 
-	getPassages: () => {
-		return axios.get("http://18.237.242.89/api/passages")
+	getPassages: (passagePage) => {
+		return axios.get(`http://18.237.242.89/api/passages?page=${passagePage}`)
 	},
 
-	getProblems: () => {
-		return axios.get("http://18.237.242.89/api/problems")
+	getProblems: (problemsPage) => {
+		return axios.get(`http://18.237.242.89/api/problems?page=${problemsPage}`)
 	}
 
 };
