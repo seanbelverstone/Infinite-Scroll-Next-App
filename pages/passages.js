@@ -9,17 +9,36 @@ class Passages extends React.Component {
 
 	state = {
 		passageResults: [],
-		page: 0
+		page: 1
 	}
 
-
-	componentDidMount = () => {
+// Function for setting the results of the API call to state on this page
+	getPassages(page) {
 		API.getPassages(page).then(results => {
-			this.setState({passageResults: results.data.data.passages});
-		});
+			const oldPassages = this.state.passageResults;
+
+			if (oldPassages.length !== 0) {
+				this.setState({passageResults: [...oldPassages, ...results.data.data.passages]});
+			} else {
+				this.setState({passageResults: results.data.data.passages})
+			}
+
+			console.log(results.data.data.passages);
+		}).then(() => {
+			// should increment the page value by 1
+			this.setState({page: this.state.page + 1})
+			console.log(this.state.passageResults);
+			console.log(this.state.page);
+		})
 	
 	}
 
+	// When component loads, perform the function defined above
+	componentDidMount = () => {
+		this.getPassages(this.state.page);
+	}
+
+	// Maps through the results of the API call
 	renderPassages() {
 		return this.state.passageResults.map(passage => {
 			return (
@@ -52,6 +71,7 @@ class Passages extends React.Component {
 							{this.renderPassages()}
 						</CardWrapper>
 					</div>
+					<a onClick={() => this.getPassages()}>Load More</a>
 				</div>
 			</div>
 		)

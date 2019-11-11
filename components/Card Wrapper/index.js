@@ -7,7 +7,7 @@ const cardStyle = {
 }
 
 const CardWrapper = props => (
-	<div style={cardStyle}>
+	<div style={cardStyle} className="cardWrapper">
 	  <ul>{props.children}</ul>
 	</div>
   );
