@@ -70,7 +70,7 @@ class Problems extends React.Component {
 		return this.state.problemResults.map(problem => {
 			return (
 				<Card 
-					key={problem.id + problem.section_id}
+					key={problem.id + problem.section_id + problem.subject_id}
 					title={problem.notes}
 					reference_id={problem.reference_number}
 					notes={problem.notes}
