@@ -2,7 +2,15 @@ import React from "react";
 import Head from "next/head";
 import MainNav from "../components/Navbar";
 
-const Problems = () => (
+class Problems extends React.Component {
+
+	state = {
+		problemResults: [],
+		page: 0,
+		scrolling: false
+	}
+
+
 	<div>
 		<Head>
 			<title>Problems</title>
@@ -18,6 +26,6 @@ const Problems = () => (
 			</div>
 		</div>
 	</div>
-);
+};
 
 export default Problems;
