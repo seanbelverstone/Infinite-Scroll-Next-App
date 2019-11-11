@@ -8,12 +8,17 @@ const cardBody = {
 	backgroundColor: "lightgray"
 }
 
+const title = {
+	fontSize: 16,
+	fontWeight: "bold"
+}
+
 const MainCard = (props) => { 
 
 	return (
 		<li className="cardList">
 			<div className="cardBody" style={cardBody}>
-				<div className="title">{`Title: ${props.title} ID: ${props.reference_id}`}</div>
+				<div className="title" style={title}>{`Title: ${props.title} ID: ${props.reference_id}`}</div>
 				<div className="subTitle">{`Notes ${props.notes}`}</div>
 				<div className="text">{props.text}</div>
 				<p>{props.label}</p>
