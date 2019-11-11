@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import Link from "next/link";
-import "./style.css";
 
 const MainNav = (props) => {
 
