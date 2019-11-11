@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 const cardStyle = {
@@ -8,8 +9,8 @@ const cardStyle = {
 
 const CardWrapper = props => (
 	<div style={cardStyle} className="cardWrapper">
-	  <ul>{props.children}</ul>
+	  <ul className="cards">{props.children}</ul>
 	</div>
-  );
+);
   
-  export default CardWrapper;
+export default CardWrapper;
