@@ -19,9 +19,9 @@ const MainCard = (props) => {
 		<li className="cardList">
 			<div className="cardBody" style={cardBody}>
 				<div className="title" style={title}>{`Title: ${props.title} ID: ${props.reference_id}`}</div>
-				<div className="subTitle">{`Notes ${props.notes}`}</div>
-				<div className="text">{props.text}</div>
-				<p>{props.label}</p>
+				<div className="subTitle">{`Notes: ${props.notes}`}</div>
+				<div className="text" ><data>{props.text}</data></div>
+				<p>Category: {props.label}</p>
 			</div>
 		</li>
 	);
