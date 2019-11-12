@@ -72,7 +72,7 @@ const store = createStore(
 ReactDOM.render(
 	<Provider store={store}>  
 		<Home />
-		<Passages />
-		<Problems />
+		{/* <Passages />
+		<Problems /> */}
 	</Provider>,    
 	document.getElementById("root"));

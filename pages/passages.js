@@ -96,4 +96,4 @@ const mapStateToProps = (state) => {
 	incrementPage,
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Passages);
+export default connect(mapStateToProps, mapDispatchToProps)(Passage);
