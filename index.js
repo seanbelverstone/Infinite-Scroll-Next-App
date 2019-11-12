@@ -48,9 +48,9 @@ const reducer = (state = initialState, action) => {
 
 	case HANDLE_SCROLL:
 
-	case RENDER_PASSAGES:
+	// case RENDER_PASSAGES:
 
-	case RENDER_PROBLEMS:
+	// case RENDER_PROBLEMS:
 
 	case INCREMENT_PAGE:
 		const newPage = state.page +1
