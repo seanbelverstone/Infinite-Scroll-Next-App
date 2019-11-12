@@ -3,39 +3,16 @@ import Head from "next/head";
 import MainNav from "../components/Navbar";
 import CardWrapper from "../components/Card Wrapper";
 import Card from "../components/Card";
-import API from "../utils/API";
+import { connect } from "react-redux";
+import { getProblems, handleScroll, incrementPage } from "../actions";
 
 
 class Problems extends React.Component {
 
-	state = {
-		problemResults: [],
-		page: 0,
-		scrolling: false
-	}
-
 	getProblems(page) {
-		API.getProblems(page).then(results => {
-			const oldProblems = this.state.problemResults;
-
-			if (oldProblems.length !== 0) {
-				this.setState({
-					problemResults: [...oldProblems, ...results.data.data.problems],
-					scrolling: false
-				});
-			} else {
-				this.setState({problemResults: results.data.data.problems})
-			}
-
-			console.log(results.data.data.problems);
-		}).then(() => {
-			// should increment the page value by 1
-			this.setState({
-				page: this.state.page + 1,
-			})
-			console.log(this.state.problemResults);
-			console.log(this.state.page);
-		})
+		
+		this.props.getProblems(page);
+		this.props.incrementPage(page);
 	
 	}
 
@@ -47,22 +24,8 @@ class Problems extends React.Component {
 	}
 
 	handleScroll = (event) => {
-		const { scrolling, page } = this.state;
-		// These returns prevent the function from continuing if either is true
-		if (scrolling) return
-		if (page >= 12) return
-
-		// Grabbing the last element in the unordered list
-		const lastCard = document.querySelector("ul.cards > li:last-child");
-
-		// calculating offset, to start loading before the user reaches the bottom of the page
-		const lastCardOffset = lastCard.offsetTop + lastCard.clientHeight;
-		const pageOffset = window.pageYOffset + window.innerHeight;
-		const bottomOffset = 20;
-		if (pageOffset > lastCardOffset - bottomOffset) {
-		this.setState({scrolling: true})
-		this.getProblems(this.state.page)
-		}
+		this.props.handleScroll(this.props.page, (this.props.maxPages = 12))
+		this.getProblems(this.props.page)
 	}
 
 	// Maps through the results of the API call
@@ -104,4 +67,18 @@ class Problems extends React.Component {
 	}
 };
 
-export default Problems;
+const mapStateToProps = (state) => {
+	return {
+	  problemResults: state.problemResults,
+	  page: state.page,
+	  scrolling: state.scrolling
+	}
+  }
+  
+  const mapDispatchToProps = {
+	getProblems,
+	handleScroll,
+	incrementPage,
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Problems);

@@ -5,6 +5,7 @@ import CardWrapper from "../components/Card Wrapper";
 import Card from "../components/Card";
 import { connect } from "react-redux";
 import { getPassages, handleScroll, incrementPage } from "../actions";
+
 class Passages extends React.Component {
 
 // Function for setting the results of the API call to state on this page
@@ -17,29 +18,15 @@ class Passages extends React.Component {
 
 	// When component loads, perform the function defined above
 	componentDidMount = () => {
-		this.getPassages(this.state.page);
+		this.getPassages(this.props.page);
 		this.scrollListener = window.addEventListener("scroll", event => {
 			this.handleScroll(event);
 		})
 	}
 
 	handleScroll = (event) => {
-		const { scrolling, page } = this.state;
-		// These returns prevent the function from continuing if either is true
-		if (scrolling) return
-		if (page >= 4) return
-
-		// Grabbing the last element in the unordered list
-		const lastCard = document.querySelector("ul.cards > li:last-child");
-
-		// calculating offset, to start loading before the user reaches the bottom of the page
-		const lastCardOffset = lastCard.offsetTop + lastCard.clientHeight;
-		const pageOffset = window.pageYOffset + window.innerHeight;
-		const bottomOffset = 20;
-		if (pageOffset > lastCardOffset - bottomOffset) {
-		this.setState({scrolling: true})
-		this.getPassages(this.state.page)
-		}
+		this.props.handleScroll(this.props.page, (this.props.maxPages = 4))
+		this.getPassages(this.props.page)
 	}
 
 	// Maps through the results of the API call
@@ -96,4 +83,4 @@ const mapStateToProps = (state) => {
 	incrementPage,
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Passage);
+export default connect(mapStateToProps, mapDispatchToProps)(Passages);
