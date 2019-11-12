@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Home from "./pages/index";
 import Passages from "./pages/passages";
 import Problems from "./pages/problems";
-import "./index.css";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { 
