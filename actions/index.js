@@ -5,32 +5,41 @@ export const RENDER_PASSAGES = "RENDER_PASSAGES";
 export const RENDER_PROBLEMS = "RENDER_PROBLEMS";
 
 
-export function getPassages() {
+export function getPassages(page) {
+	console.log(page);
 	return {
 		type: GET_PASSAGES,
+		page
 	};
 }
 
-export function getProblems() {
+export function getProblems(page) {
+	console.log(page)
 	return {
-		type: GET_PROBLEMS
+		type: GET_PROBLEMS,
+		page
 	};
 }
 
-export function handleScroll() {
+export function handleScroll(event, scrolling, page) {
 	return {
-		type: HANDLE_SCROLL
+		type: HANDLE_SCROLL,
+		event,
+		scrolling,
+		page
 	}
 }
 
-export function renderPassages() {
+export function renderPassages(passageResults) {
 	return {
-		type: RENDER_PASSAGES
+		type: RENDER_PASSAGES,
+		passageResults
 	}
 }
 
-export function renderProblems() {
+export function renderProblems(problemResults) {
 	return {
-		type: RENDER_PROBLEMS
+		type: RENDER_PROBLEMS,
+		problemResults
 	}
 }
