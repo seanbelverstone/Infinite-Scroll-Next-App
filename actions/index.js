@@ -1,8 +1,6 @@
 export const GET_PASSAGES = "GET_PASSAGES";
 export const GET_PROBLEMS = "GET_PROBLEMS";
 export const HANDLE_SCROLL = "HANDLE_SCROLL";
-// export const RENDER_PASSAGES = "RENDER_PASSAGES";
-// export const RENDER_PROBLEMS = "RENDER_PROBLEMS";
 export const INCREMENT_PAGE = "INCREMENT_PAGE";
 
 

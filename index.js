@@ -1,11 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import Home from "./pages/index";
-import Passages from "./pages/passages";
-import Problems from "./pages/problems";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
 import API from "./utils/API";
+import { createStore } from "redux";
 import { 
 	GET_PASSAGES,
 	GET_PROBLEMS,
@@ -93,15 +88,15 @@ const reducer = (state = initialState, action) => {
 	}
 };
 
+if (typeof window === "undefined") {
+	global.window = {}
+}
+
+if (process.browser){}
+
 const store = createStore(
 	reducer,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-ReactDOM.render(
-	<Provider store={store}>  
-		<Home />
-		{/* <Passages />
-		<Problems /> */}
-	</Provider>,    
-	document.getElementById("root"));
+export default store;

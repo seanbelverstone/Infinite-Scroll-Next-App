@@ -3,6 +3,8 @@ import Head from "next/head";
 import MainNav from "../components/Navbar";
 import CardWrapper from "../components/Card Wrapper";
 import Card from "../components/Card";
+import store from "../index";
+import { createStore } from "redux";
 import { connect } from "react-redux";
 import { getPassages, handleScroll, incrementPage } from "../actions";
 
@@ -68,6 +70,15 @@ class Passages extends React.Component {
 	}
 	
 };
+
+Passages.getInitialProps = ({ store }) => {
+	store.dispatch(increment()); // action will dispatched on page load
+  
+	const state = reduxStore.getState(); // returns redux store
+	console.log(state);
+  
+	return {};
+  };
 
 const mapStateToProps = (state) => {
 	return {
