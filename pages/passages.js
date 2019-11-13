@@ -70,7 +70,7 @@ class Passages extends React.Component {
 };
 
 Passages.getInitialProps = () => {
-	store.dispatch(getPassages()); // action will dispatched on page load
+	store.dispatch(getPassages(), handleScroll(), incrementPage()); // action will dispatched on page load
   
 	const state = store.getState(); // returns redux store
 	console.log(state);

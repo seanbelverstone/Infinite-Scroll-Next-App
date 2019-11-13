@@ -37,13 +37,13 @@ class Home extends React.Component {
 	
 };
 
-Home.getInitialProps = (store) => {
-	store.dispatch(); // action will dispatched on page load
+// Home.getInitialProps = (store) => {
+// 	store.dispatch(); // action will dispatched on page load
   
-	const state = store.getState(); // returns redux store
-	console.log(state);
+// 	const state = store.getState(); // returns redux store
+// 	console.log(state);
   
-	return {};
-};
+// 	return {};
+// };
 
 export default Home;
