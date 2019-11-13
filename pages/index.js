@@ -1,11 +1,21 @@
 import React from "react";
 import Head from "next/head";
 import MainNav from "../components/Navbar";
+import store from "../index";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Home extends React.Component {
+
+	componentDidMount() {
+		<Provider store={store}>  
+			<Home />
+		</Provider>,    
+		document.getElementById("root")
+	}
+
+
 	render() {
 		return (
 			<div>
@@ -28,11 +38,6 @@ class Home extends React.Component {
 	
 };
 
-ReactDOM.render(
-	<Provider store={store}>  
-		<Home />
-	</Provider>,    
-	document.getElementById("root")
-)
+
 
 export default Home;
