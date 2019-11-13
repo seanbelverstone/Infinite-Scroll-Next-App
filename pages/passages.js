@@ -4,7 +4,6 @@ import MainNav from "../components/Navbar";
 import CardWrapper from "../components/Card Wrapper";
 import Card from "../components/Card";
 import store from "../index";
-import { createStore } from "redux";
 import { connect } from "react-redux";
 import { getPassages, handleScroll, incrementPage } from "../actions";
 
@@ -12,7 +11,6 @@ class Passages extends React.Component {
 
 // Function for setting the results of the API call to state on this page
 	getPassages(page) {
-		
 		this.props.getPassages(page);
 		this.props.incrementPage(page);
 	
@@ -71,10 +69,10 @@ class Passages extends React.Component {
 	
 };
 
-Passages.getInitialProps = ({ store }) => {
-	store.dispatch(increment()); // action will dispatched on page load
+Passages.getInitialProps = () => {
+	store.dispatch(getPassages()); // action will dispatched on page load
   
-	const state = reduxStore.getState(); // returns redux store
+	const state = store.getState(); // returns redux store
 	console.log(state);
   
 	return {};

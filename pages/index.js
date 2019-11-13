@@ -3,7 +3,6 @@ import Head from "next/head";
 import MainNav from "../components/Navbar";
 import store from "../index";
 import { Provider } from "react-redux";
-import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Home extends React.Component {
@@ -38,6 +37,13 @@ class Home extends React.Component {
 	
 };
 
-
+Home.getInitialProps = (store) => {
+	store.dispatch(); // action will dispatched on page load
+  
+	const state = store.getState(); // returns redux store
+	console.log(state);
+  
+	return {};
+};
 
 export default Home;

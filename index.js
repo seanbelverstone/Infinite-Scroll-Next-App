@@ -16,14 +16,20 @@ const initialState = {
 	scrolling: false
 };
 
+if (typeof window === "undefined") {
+	global.window = {}
+}
+
+if (process.browser){}
+
 const reducer = (state = initialState, action) => {
 	console.log(state);
 	switch(action.type) {
 
 	case GET_PASSAGES: 
-		API.getPassages(page).then(results => {
+		API.getPassages(state.page).then(results => {
 			const oldPassages = state.passageResults;
-			console.log(results.data.data.passages);
+			// console.log(results.data.data.passages);
 			if (oldPassages.length !== 0) {
 				return {
 					...state,
@@ -39,9 +45,9 @@ const reducer = (state = initialState, action) => {
 		});
 
 	case GET_PROBLEMS:
-		API.getProblems(page).then(results => {
+		API.getProblems(state.page).then(results => {
 			const oldProblems = state.problemResults;
-			console.log(results.data.data.problems);
+			// console.log(results.data.data.problems);
 			if (oldPassages.length !== 0) {
 				return {
 					...state,
@@ -87,12 +93,6 @@ const reducer = (state = initialState, action) => {
 		return state;
 	}
 };
-
-if (typeof window === "undefined") {
-	global.window = {}
-}
-
-if (process.browser){}
 
 const store = createStore(
 	reducer,
