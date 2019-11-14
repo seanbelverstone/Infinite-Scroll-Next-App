@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import MainNav from "../components/Navbar";
 import store from "../index";
-import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Home extends React.Component {
@@ -32,6 +31,7 @@ class Home extends React.Component {
 					</div>
 				</div>
 			</div>
+
 		)
 	}
 	

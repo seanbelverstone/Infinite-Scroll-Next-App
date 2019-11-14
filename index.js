@@ -1,6 +1,9 @@
 import React from "react";
 import API from "./utils/API";
 import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { render } from "react-dom";
+import Home from "./pages/index";
 import { 
 	GET_PASSAGES,
 	GET_PROBLEMS,
@@ -98,5 +101,12 @@ const store = createStore(
 	reducer,
 	typeof window !== "undefined" && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+render(
+	<Provider store={store}>
+		<Home />
+	</Provider>,
+	document.getElementById("root")
+)
 
 export default store;
